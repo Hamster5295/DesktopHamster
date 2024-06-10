@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dff2tsigqs4gx"]
+
+[ext_resource type="Script" path="res://script/game.gd" id="1_asuy5"]
+[ext_resource type="Script" path="res://script/hamster.gd" id="1_ldkky"]
+[ext_resource type="Texture2D" uid="uid://cm7j5bngw6cci" path="res://texture/Daiyousei.png" id="1_qmhvd"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_asuy5")
+
+[node name="Hamster" type="Area2D" parent="."]
+position = Vector2(150, 100)
+scale = Vector2(2, 2)
+script = ExtResource("1_ldkky")
+
+[node name="Sprite" type="Sprite2D" parent="Hamster"]
+texture_filter = 1
+texture = ExtResource("1_qmhvd")
+
+[node name="Col" type="CollisionPolygon2D" parent="Hamster"]
+polygon = PackedVector2Array(-40, -30, 40, -30, 40, 30, -40, 30)
+
+[connection signal="input_event" from="Hamster" to="Hamster" method="_on_input_event"]
